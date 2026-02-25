@@ -1,0 +1,20 @@
+---
+layout: post
+title: "first post"
+date: 2026-02-25
+categories: blog
+permalink: /my-first-post/
+---
+
+# Hello
+this is my first post
+
+## pros
+easy
+1. oo
+2. oo
+
+```python
+def hello():
+  print("hello jekill");
+```
