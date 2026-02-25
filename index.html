@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070A12" />
+  <meta name="description" content="Sehwan Kim — DevSecOps / Infra Security Portfolio" />
+  <title>Sehwan Kim | DevSecOps Portfolio</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sehwan Kim | DevSecOps Portfolio" />
+  <meta property="og:description" content="Teleport · Observability · IaC · Security Automation" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* =========================
+       GLOBAL / TOKENS
+    ========================= */
+    :root{
+      --bg: #070A12;
+      --bg2:#0A0F1E;
+      --text: rgba(255,255,255,.9);
+      --muted: rgba(255,255,255,.64);
+      --faint: rgba(255,255,255,.44);
+      --line: rgba(255,255,255,.12);
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+
+      --violet:#7c3aed;
+      --cyan:#06b6d4;
+      --green:#22c55e;
+      --pink:#ec4899;
+
+      --shadow: 0 30px 100px rgba(0,0,0,.55);
+      --r1: 18px;
+      --r2: 28px;
+
+      --max: 1120px;
+      --gap: 18px;
+    }
+
+    [data-theme="light"]{
+      --bg:#f7f7fb;
+      --bg2:#ffffff;
+      --text: rgba(10,15,23,.9);
+      --muted: rgba(10,15,23,.62);
+      --faint: rgba(10,15,23,.45);
+      --line: rgba(10,15,23,.12);
+
+      --card: rgba(10,15,23,.06);
+      --card2: rgba(10,15,23,.09);
+
+      --shadow: 0 20px 70px rgba(10,15,23,.14);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, Noto Sans KR, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,.40), transparent 55%),
+        radial-gradient(900px 600px at 105% 5%, rgba(6,182,212,.25), transparent 55%),
+        radial-gradient(900px 600px at 60% 115%, rgba(34,197,94,.20), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit; text-decoration:none}
+    p{line-height:1.7}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+
+    /* =========================
+       COOL BACKGROUND LAYERS
+    ========================= */
+    .fx{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      z-index: -1;
+    }
+    .grain{
+      position:absolute; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      opacity:.18;
+      mix-blend-mode: overlay;
+    }
+    [data-theme="light"] .grain{opacity:.10; mix-blend-mode:multiply}
+
+    .orb{
+      position:absolute;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: .55;
+      transform: translate3d(0,0,0);
+      will-change: transform;
+    }
+    .orb.a{ background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.9), rgba(124,58,237,0) 55%); left:-180px; top:-220px;}
+    .orb.b{ background: radial-gradient(circle at 40% 40%, rgba(6,182,212,.9), rgba(6,182,212,0) 55%); right:-220px; top:-160px;}
+    .orb.c{ background: radial-gradient(circle at 40% 40%, rgba(34,197,94,.9), rgba(34,197,94,0) 55%); left:25%; bottom:-340px;}
+
+    /* =========================
+       NAV
+    ========================= */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,0));
+      border-bottom: 1px solid var(--line);
+    }
+    [data-theme="light"] .nav{
+      background: linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,0));
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.75), rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.9));
+      box-shadow: 0 18px 55px rgba(124,58,237,.28);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .nav-links{
+      display:flex; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav-links a{
+      font-size:13px;
+      color: var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:.22s ease;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      background: var(--card);
+      border-color: var(--line);
+      transform: translateY(-1px);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      cursor:pointer;
+      transition:.22s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+      user-select:none;
+    }
+    .pill:hover{transform: translateY(-1px); background: var(--card2); color: var(--text)}
+    .dot{width:8px; height:8px; border-radius:99px; background: linear-gradient(135deg,var(--violet),var(--cyan)); box-shadow:0 0 0 4px rgba(124,58,237,.12)}
+
+    /* =========================
+       HERO
+    ========================= */
+    .hero{padding: 42px 0 18px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: var(--gap);
+      align-items:stretch;
+    }
+    @media (max-width: 920px){ .hero-grid{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(900px 260px at 20% 10%, rgba(124,58,237,.22), transparent 60%),
+        radial-gradient(900px 260px at 80% 0%, rgba(6,182,212,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-120px;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(124,58,237,.0), rgba(124,58,237,.18), rgba(6,182,212,.12), rgba(34,197,94,.12), rgba(236,72,153,.10), rgba(124,58,237,.0));
+      filter: blur(22px);
+      opacity:.65;
+      animation: spin 18s linear infinite;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+    [data-theme="light"] .card::after{mix-blend-mode: multiply; opacity:.35}
+    @keyframes spin{to{transform: rotate(360deg)}}
+
+    .card-inner{position:relative; padding:26px}
+    .kicker{
+      display:flex; flex-wrap:wrap; align-items:center;
+      gap:10px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      overflow:hidden;
+    }
+    .badge::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+      transform: translateX(-120%);
+      animation: shimmer 4.8s ease-in-out infinite;
+      opacity:.55;
+      pointer-events:none;
+    }
+    @keyframes shimmer{
+      0%{transform: translateX(-120%)}
+      55%{transform: translateX(120%)}
+      100%{transform: translateX(120%)}
+    }
+
+    .h1{
+      margin: 14px 0 10px;
+      font-size: 44px;
+      letter-spacing: -1px;
+      line-height: 1.06;
+    }
+    @media (max-width: 520px){ .h1{font-size:34px} }
+
+    .grad1{
+      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(6,182,212,1));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .grad2{
+      background: linear-gradient(135deg, rgba(34,197,94,1), rgba(6,182,212,1));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    .sub{
+      margin:0;
+      font-size:15px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .cta{
+      margin-top: 18px;
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:650;
+      font-size:14px;
+      transition:.22s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .btn:hover{transform: translateY(-2px); background: var(--card2)}
+    .btn.primary{
+      border-color: rgba(124,58,237,.45);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.86));
+      color:#fff;
+      box-shadow: 0 20px 60px rgba(124,58,237,.28);
+    }
+    .btn.primary:hover{filter: brightness(1.05)}
+    .btn .icon{width:16px; height:16px; opacity:.92}
+
+    .btn.ripple::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,.26), transparent 45%);
+      opacity:0;
+      transition: opacity .35s ease;
+      pointer-events:none;
+    }
+    .btn.ripple:hover::after{opacity:1}
+
+    /* =========================
+       SIDE PANELS
+    ========================= */
+    .side{
+      display:grid;
+      gap: var(--gap);
+      align-content:start;
+    }
+    .mini{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
+      border-radius: var(--r1);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .mini::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(380px 170px at 15% 10%, rgba(236,72,153,.12), transparent 60%),
+                  radial-gradient(380px 170px at 90% 10%, rgba(6,182,212,.12), transparent 60%);
+      pointer-events:none;
+      opacity:.7;
+    }
+    .mini h3{
+      margin:0 0 10px;
+      font-size:14px;
+      color: var(--muted);
+      font-weight:700;
+      letter-spacing:.2px;
+      position:relative;
+    }
+    .stat{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:10px;
+      padding:12px 0;
+      border-top:1px dashed var(--line);
+      position:relative;
+    }
+    .stat:first-of-type{border-top:none; padding-top:0}
+    .stat b{font-size:14px}
+    .stat span{font-size:12px; color: var(--muted)}
+    .kbd{
+      font-size:12px;
+      padding:2px 7px;
+      border-radius:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; position:relative}
+    .chip{
+      font-size:12px;
+      color: var(--muted);
+      padding:7px 9px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      transition:.2s ease;
+    }
+    .chip:hover{transform: translateY(-1px); background: var(--card2); color: var(--text)}
+
+    /* =========================
+       SECTIONS / GRID
+    ========================= */
+    section{padding: 34px 0}
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .section-title h2{margin:0; font-size:18px; letter-spacing:-.2px}
+    .section-title p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+    .col-12{grid-column: span 12}
+    .col-7{grid-column: span 7}
+    .col-5{grid-column: span 5}
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    @media (max-width: 920px){
+      .col-7,.col-5,.col-6,.col-4{grid-column: span 12}
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
+      border-radius: var(--r1);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      transition: .22s ease;
+      transform: translateZ(0);
+    }
+    .panel:hover{
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.02));
+    }
+    .panel h3{margin:0 0 6px; font-size:15px; letter-spacing:-.2px}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; color: var(--muted); font-size:12px; margin-bottom:10px}
+    .desc{margin:0; color: var(--muted); font-size:13px}
+
+    .sep{height:1px; background: var(--line); margin: 14px 0}
+    .glowline{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(124,58,237,.7), rgba(6,182,212,.55), transparent);
+      opacity:.75;
+      margin: 18px 0 8px;
+    }
+    .tagline{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:12px;
+    }
+
+    /* =========================
+       PROJECT CARDS (WITH MOTION)
+    ========================= */
+    .proj{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
+      border-radius: var(--r1);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      transition: .22s ease;
+      transform: translateZ(0);
+    }
+    .proj::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(420px 180px at 20% 10%, rgba(124,58,237,.16), transparent 60%),
+                  radial-gradient(420px 180px at 85% 0%, rgba(6,182,212,.14), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .proj:hover{
+      transform: translateY(-3px);
+      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.02));
+    }
+    .proj .top{
+      display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+      position:relative;
+    }
+    .proj h3{margin:0; font-size:16px}
+    .proj .links{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .linkbtn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      transition:.2s ease;
+      white-space:nowrap;
+      position:relative;
+      overflow:hidden;
+    }
+    .linkbtn:hover{color: var(--text); background: var(--card2); transform: translateY(-1px)}
+    .proj ul{
+      margin:12px 0 0;
+      padding:0 0 0 18px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.65;
+      position:relative;
+    }
+    .stack{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; position:relative}
+    .stack .chip{
+      background: rgba(124,58,237,.08);
+      border-color: rgba(124,58,237,.18);
+    }
+    [data-theme="light"] .stack .chip{
+      background: rgba(124,58,237,.11);
+      border-color: rgba(124,58,237,.22);
+    }
+
+    /* =========================
+       REVEAL + TILT
+    ========================= */
+    .reveal{opacity:0; transform: translateY(14px) scale(.99); transition: .75s cubic-bezier(.2,.8,.2,1)}
+    .reveal.in{opacity:1; transform:none}
+
+    .tilt{
+      will-change: transform;
+      transform-style:preserve-3d;
+    }
+    .tilt > *{transform: translateZ(0)}
+    .tilt:hover{transition: transform .12s ease}
+
+    /* =========================
+       FOOTER
+    ========================= */
+    footer{
+      padding: 28px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size:12px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+
+    /* Accessibility preference */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+      body{scroll-behavior:auto}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- FX LAYERS -->
+  <div class="fx" aria-hidden="true">
+    <div class="orb a" id="orbA"></div>
+    <div class="orb b" id="orbB"></div>
+    <div class="orb c" id="orbC"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Sehwan Kim</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+
+        <button class="pill" id="themeBtn" type="button" aria-label="Toggle theme">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="card reveal tilt" data-tilt>
+          <div class="card-inner">
+            <div class="kicker">
+              <span class="badge"><span class="dot" style="width:7px;height:7px"></span> DevSecOps · Infra Security</span>
+              <span class="badge">Teleport · Observability · Automation</span>
+              <span class="badge">Seoul, KR</span>
+            </div>
+
+            <h1 class="h1">
+              <span class="grad1">Secure</span> by default.<br/>
+              <span class="grad2">Reliable</span> in production.
+            </h1>
+
+            <p class="sub">
+              DevSecOps 엔지니어로 2년 8개월(nodeinfra) 실무 경험.
+              Teleport 기반 접근제어, Observability(로그/메트릭), 자동화로
+              운영 리스크와 반복 작업을 줄입니다.
+              <span class="mono" style="opacity:.85">“reproducible · least-privilege · runbook-first”</span>
+            </p>
+
+            <div class="cta">
+              <a class="btn primary ripple" href="#projects">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                View Projects
+              </a>
+              <a class="btn ripple" href="#contact">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>
+                Contact
+              </a>
+              <button class="btn ripple" type="button" id="copyEmailBtn" data-email="you@example.com">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M8 7h12v14H8z" stroke="currentColor" stroke-width="2"/><path d="M4 3h12v4H4z" stroke="currentColor" stroke-width="2"/></svg>
+                Copy Email
+              </button>
+            </div>
+
+            <div class="glowline"></div>
+            <div class="tagline">
+              <b style="color:var(--text)">One-line pitch:</b>
+              Teleport 기반 Zero Trust + 관측(로그/메트릭) + 자동화로 운영 리스크를 줄이는 DevSecOps 엔지니어.
+            </div>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="mini reveal tilt" data-tilt>
+            <h3>Highlights</h3>
+            <div class="stat">
+              <div>
+                <b>nodeinfra</b><br/>
+                <span>DevSecOps · 2y 8m</span>
+              </div>
+              <span class="kbd">21.12–24.08</span>
+            </div>
+            <div class="stat">
+              <div>
+                <b>InfoSec (ROKAF)</b><br/>
+                <span>정보호호병</span>
+              </div>
+              <span class="kbd">17.08–19.05</span>
+            </div>
+            <div class="stat">
+              <div>
+                <b>BoB</b><br/>
+                <span>컨설팅 트랙 수료</span>
+              </div>
+              <span class="kbd">Best of the Best</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Teleport</span>
+              <span class="chip">RBAC</span>
+              <span class="chip">Prometheus</span>
+              <span class="chip">Loki</span>
+              <span class="chip">Ansible</span>
+              <span class="chip">Terraform</span>
+            </div>
+          </div>
+
+          <div class="mini reveal tilt" data-tilt>
+            <h3>Links</h3>
+            <div class="chips">
+              <a class="chip" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="chip" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="chip" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+              <a class="chip" href="#" target="_blank" rel="noreferrer">Blog</a>
+            </div>
+            <div class="sep"></div>
+            <div class="tagline">
+              더미 링크 그대로 두면 “대충 만든 사람”으로 보인다. 실제 링크로 바꿔라.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title reveal">
+        <h2>Projects</h2>
+        <p>기술 나열이 아니라 <b>문제 → 조치 → 결과</b>로 쓴다.</p>
+      </div>
+
+      <div class="grid">
+        <article class="proj col-6 reveal tilt" data-tilt>
+          <div class="top">
+            <div>
+              <h3>Teleport 운영/업그레이드 & SSH 접근 불가 복구</h3>
+              <div class="meta">Zero Trust · Incident 대응 · 표준화</div>
+            </div>
+            <div class="links">
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">Write-up</a>
+            </div>
+          </div>
+          <ul>
+            <li>Teleport 클러스터 <b>v14→v15</b> 업그레이드 후 일부 서버 접근 불가 이슈 발생.</li>
+            <li>에이전트 버전 불일치를 원인으로 좁히고, 직접 접속 후 <b>에이전트 업그레이드/정합</b>으로 복구.</li>
+            <li>자산별 Teleport 버전 현황을 정리하고 토큰/라벨 체계를 문서화해 운영 표준을 만듦.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Teleport</span><span class="chip">Linux</span><span class="chip">Runbook</span><span class="chip">Upgrade</span>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal tilt" data-tilt>
+          <div class="top">
+            <div>
+              <h3>Teleport Bot 최소권한 재설계 (GitHub Actions)</h3>
+              <div class="meta">Machine ID · RBAC · Least Privilege</div>
+            </div>
+            <div class="links">
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">Diagram</a>
+            </div>
+          </div>
+          <ul>
+            <li>Bot이 직원용 role을 impersonate하는 구조를 <b>권한 과다</b>로 판단.</li>
+            <li>Bot/직원 역할 분리, Bot별 접근 서버를 최소화해 <b>권한 축소</b> 적용.</li>
+            <li>Repo 단위 Join Token 제약과 역할 설계를 결합해 공격면 축소.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Teleport Machine ID</span><span class="chip">GitHub Actions</span><span class="chip">RBAC</span>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal tilt" data-tilt>
+          <div class="top">
+            <div>
+              <h3>Teleport 관리자 로그인 알림 자동화</h3>
+              <div class="meta">Audit Events · Webhook · systemd</div>
+            </div>
+            <div class="links">
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">Demo</a>
+            </div>
+          </div>
+          <ul>
+            <li>일별 audit 로그를 follow 하며 <span class="mono">user.login</span> 중 <b>teleport-admin</b>만 필터링.</li>
+            <li>Webhook(Zapier→Slack) 전송 + <b>systemd on-failure</b>로 상시 실행/재시작 구성.</li>
+            <li>운영자가 놓치기 쉬운 관리자 접근을 즉시 감지하는 루프를 단순화.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Bash</span><span class="chip">systemd</span><span class="chip">Webhook</span><span class="chip">Security</span>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal tilt" data-tilt>
+          <div class="top">
+            <div>
+              <h3>Observability Skeleton (Lab)</h3>
+              <div class="meta">Prometheus · Loki · Grafana · Docker Compose</div>
+            </div>
+            <div class="links">
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noreferrer">Docs</a>
+            </div>
+          </div>
+          <ul>
+            <li>도커 컴포즈로 관측 스택을 구성하고, 최소 대시보드로 상태 가시화.</li>
+            <li>로그 라벨링 기준을 잡아 장애 시 “어디서 막혔는지” 추적 가능하게 설계.</li>
+            <li>향후 알람 룰/런북/비용 최적화까지 확장 가능한 골격 마련.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Prometheus</span><span class="chip">Loki</span><span class="chip">Grafana</span><span class="chip">Docker</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title reveal">
+        <h2>Experience</h2>
+        <p>타임라인은 짧고 정확하게. 성과는 추후 수치로 보강.</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-7 reveal tilt" data-tilt>
+          <h3>DevSecOps Engineer · nodeinfra</h3>
+          <div class="meta">
+            <span>21.12–24.08</span><span>·</span><span>2y 8m</span><span>·</span><span>DevSecOps / Infra Security</span>
+          </div>
+          <p class="desc">
+            Teleport 기반 접근제어 운영 및 권한 재설계, 보안 이벤트 알림 자동화,
+            로그/메트릭 관측 기반 트러블슈팅과 운영 문서화를 수행했습니다.
+          </p>
+          <div class="sep"></div>
+          <p class="desc">
+            <b style="color:var(--text)">핵심 역량:</b> 운영 이슈를 재현하고 원인을 좁히며, 다음 사람이 반복하지 않게 표준/자동화/문서로 남깁니다.
+          </p>
+          <div class="tagline">
+            다음 단계: “수동 작업 시간 감소”, “장애 복구 시간 단축” 같은 <b>정량 성과</b> 2~3개를 여기 꼭 넣어라.
+          </div>
+        </div>
+
+        <div class="panel col-5 reveal tilt" data-tilt>
+          <h3>Military · 정보호호병</h3>
+          <div class="meta"><span>17.08–19.05</span></div>
+          <p class="desc">
+            정보보호 직무 수행 경험. 보안 관점의 기본기(규정/통제/리스크 사고방식)를 체득.
+          </p>
+          <div class="sep"></div>
+          <h3 style="margin-top:0">BoB</h3>
+          <div class="meta"><span>Best of the Best</span><span>·</span><span>컨설팅 트랙 수료</span></div>
+          <p class="desc">보안 실무 관점에서 문제 정의/리스크 분석/개선 제안 역량을 강화.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title reveal">
+        <h2>Skills</h2>
+        <p>“도구 목록”보다 “할 수 있는 일”로 묶었다.</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-4 reveal tilt" data-tilt>
+          <h3>Zero Trust Access</h3>
+          <p class="desc">Teleport 운영, RBAC 설계/검증, Machine ID 기반 CI 접근 구성</p>
+          <div class="chips">
+            <span class="chip">Teleport</span><span class="chip">RBAC</span><span class="chip">Machine ID</span>
+          </div>
+        </div>
+        <div class="panel col-4 reveal tilt" data-tilt>
+          <h3>Observability</h3>
+          <p class="desc">Prometheus/Loki/Grafana 구성, 라벨링 기준, 운영 디버깅 루프</p>
+          <div class="chips">
+            <span class="chip">Prometheus</span><span class="chip">Loki</span><span class="chip">Grafana</span>
+          </div>
+        </div>
+        <div class="panel col-4 reveal tilt" data-tilt>
+          <h3>Automation / IaC</h3>
+          <p class="desc">반복 작업 자동화, 재현 가능한 인프라 구성, 운영 문서화</p>
+          <div class="chips">
+            <span class="chip">Bash</span><span class="chip">Ansible</span><span class="chip">Terraform</span>
+          </div>
+        </div>
+
+        <div class="panel col-12 reveal tilt" data-tilt>
+          <h3>What I deliver</h3>
+          <p class="desc">
+            Runbook-first 운영 · 최소권한 접근 구조 · 관측 가능한 시스템 · 사람이 안 해도 되는 작업 자동화.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-title reveal">
+        <h2>Education</h2>
+        <p>학력은 간단히, 핵심만.</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-6 reveal tilt" data-tilt>
+          <h3>경일대학교 · 사이버보안학과</h3>
+          <div class="meta"><span>전공</span></div>
+          <p class="desc">보안 기본기와 시스템/네트워크 기반을 학습.</p>
+        </div>
+        <div class="panel col-6 reveal tilt" data-tilt>
+          <h3>BoB · 컨설팅 트랙</h3>
+          <div class="meta"><span>수료</span></div>
+          <p class="desc">보안 컨설팅 관점의 문제 정의, 리스크 분석, 개선안 도출 경험.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title reveal">
+        <h2>Contact</h2>
+        <p>메일/깃헙은 반드시 실제 주소로 교체.</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-7 reveal tilt" data-tilt>
+          <h3>Let’s build something reliable</h3>
+          <p class="desc">
+            DevSecOps / Infra Security / SRE 포지션에 관심이 있습니다.
+            특히 Zero Trust, Observability, Automation, Platform 운영을 잘합니다.
+          </p>
+          <div class="sep"></div>
+          <div class="meta">
+            <span>Email:</span> <a class="mono" href="mailto:you@example.com">you@example.com</a>
+          </div>
+          <div class="meta">
+            <span>GitHub:</span> <a class="mono" href="https://github.com/" target="_blank" rel="noreferrer">github.com/your-id</a>
+          </div>
+          <div class="meta">
+            <span>LinkedIn:</span> <a class="mono" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin.com/in/your-id</a>
+          </div>
+
+          <div class="tagline">
+            더미를 안 바꾸면 “세부를 못 챙기는 사람”으로 보인다. 반드시 교체.
+          </div>
+        </div>
+
+        <div class="panel col-5 reveal tilt" data-tilt>
+          <h3>Short intro</h3>
+          <p class="desc">
+            Teleport 기반 접근제어와 관측(로그/메트릭), 자동화로
+            운영 리스크를 줄이는 DevSecOps 엔지니어입니다.
+          </p>
+          <div class="sep"></div>
+          <p class="desc">
+            <span class="mono">Press T</span> to toggle theme · <span class="mono">/</span> to jump to Projects
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot">
+        <div>© <span id="year"></span> Sehwan Kim. Built for GitHub Pages.</div>
+        <div class="mono">Motion tuned · micro-interactions · tilt · parallax orbs</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // =========================
+    // Theme
+    // =========================
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function setTheme(t){
+      if(t === 'light'){
+        root.setAttribute('data-theme', 'light');
+        themeLabel.textContent = 'Light';
+      } else {
+        root.removeAttribute('data-theme');
+        themeLabel.textContent = 'Dark';
+      }
+      localStorage.setItem('theme', t);
+    }
+    const saved = localStorage.getItem('theme');
+    if(saved) setTheme(saved);
+
+    themeBtn.addEventListener('click', () => {
+      const now = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      setTheme(now === 'light' ? 'dark' : 'light');
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if(e.key.toLowerCase() === 't') themeBtn.click();
+      if(e.key === '/'){
+        e.preventDefault();
+        document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+      }
+    });
+
+    // =========================
+    // Copy email
+    // =========================
+    const copyBtn = document.getElementById('copyEmailBtn');
+    copyBtn.addEventListener('click', async () => {
+      const email = copyBtn.getAttribute('data-email');
+      try{
+        await navigator.clipboard.writeText(email);
+        const old = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => copyBtn.textContent = old, 1200);
+      }catch(e){
+        alert('복사 실패: 브라우저 권한을 확인하세요.');
+      }
+    });
+
+    // =========================
+    // Reveal on scroll
+    // =========================
+    const els = [...document.querySelectorAll('.reveal')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+
+    // =========================
+    // Ripple highlight for buttons
+    // =========================
+    document.querySelectorAll('.ripple').forEach((btn) => {
+      btn.addEventListener('pointermove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        btn.style.setProperty('--x', x + '%');
+        btn.style.setProperty('--y', y + '%');
+      });
+    });
+
+    // =========================
+    // Tilt effect (subtle)
+    // =========================
+    const tilts = [...document.querySelectorAll('[data-tilt]')];
+    const maxTilt = 6; // degrees
+    tilts.forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const rx = (maxTilt/2 - py * maxTilt).toFixed(2);
+        const ry = (px * maxTilt - maxTilt/2).toFixed(2);
+        el.style.transform = `translateY(-2px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transform = '';
+      });
+    });
+
+    // =========================
+    // Parallax orbs (mouse + scroll)
+    // =========================
+    const orbA = document.getElementById('orbA');
+    const orbB = document.getElementById('orbB');
+    const orbC = document.getElementById('orbC');
+
+    let mx = 0, my = 0;
+    window.addEventListener('pointermove', (e) => {
+      mx = (e.clientX / window.innerWidth - 0.5);
+      my = (e.clientY / window.innerHeight - 0.5);
+    });
+
+    function raf(){
+      const sy = window.scrollY || 0;
+      const t1x = mx * 40;
+      const t1y = my * 40 + sy * 0.02;
+      const t2x = mx * -45;
+      const t2y = my * 35 + sy * 0.015;
+      const t3x = mx * 25;
+      const t3y = my * -25 + sy * 0.025;
+
+      orbA.style.transform = `translate3d(${t1x}px, ${t1y}px, 0)`;
+      orbB.style.transform = `translate3d(${t2x}px, ${t2y}px, 0)`;
+      orbC.style.transform = `translate3d(${t3x}px, ${t3y}px, 0)`;
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
