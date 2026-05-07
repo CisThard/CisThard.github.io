@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>김세환 — DevOps / Cloud / Platform Engineer</title>
+  <meta name="description" content="DevOps / Cloud / Platform Engineer with Security Background — 인프라 운영과 보안 경험을 바탕으로, 클라우드 환경에서 안정적인 배포·접근통제·운영 자동화를 구현하는 엔지니어." />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="김세환 — DevOps / Cloud / Platform Engineer" />
+  <meta property="og:description" content="인프라 운영과 보안 경험을 바탕으로, 클라우드 환경에서 안정적인 배포·접근통제·운영 자동화를 구현하는 엔지니어." />
+  <meta property="og:type" content="website" />
+
+  <!-- Pretendard for Korean readability + system fallback -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <!-- ============== TOP NAVIGATION ============== -->
+  <header class="nav" role="banner">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#hero" aria-label="김세환 포트폴리오 홈">
+        <span class="nav__brand-mark">SH</span>
+        <span class="nav__brand-text">Sehwan Kim</span>
+      </a>
+
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="primary-nav" class="nav__menu" aria-label="주요 섹션">
+        <a href="#strengths">Strengths</a>
+        <a href="#project">Project</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#research">Research</a>
+        <a href="#certs">Certs</a>
+        <a href="#education">Education</a>
+        <a href="#activities">Activities</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact" class="nav__cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============== 1. HERO ============== -->
+    <section id="hero" class="hero" aria-labelledby="hero-name">
+      <div class="container">
+        <p class="hero__eyebrow">DevOps · Cloud · Platform Engineer with Security Background</p>
+        <h1 id="hero-name" class="hero__name">김세환 <span aria-hidden="true">·</span> <span class="hero__name-en">Sehwan Kim</span></h1>
+        <p class="hero__lead">
+          인프라 운영과 보안 경험을 바탕으로, 클라우드 환경에서<br class="only-desktop" />
+          안정적인 <strong>배포</strong>·<strong>접근통제</strong>·<strong>운영 자동화</strong>를 구현하는 엔지니어입니다.
+        </p>
+
+        <ul class="badges" aria-label="핵심 키워드">
+          <li class="badge">AWS</li>
+          <li class="badge">EKS</li>
+          <li class="badge">Kubernetes</li>
+          <li class="badge">Docker</li>
+          <li class="badge">Terraform</li>
+          <li class="badge">GitHub Actions</li>
+          <li class="badge">Argo CD</li>
+          <li class="badge">Teleport</li>
+          <li class="badge">Linux</li>
+          <li class="badge">Security</li>
+          <li class="badge">ISMS</li>
+          <li class="badge">Monitoring</li>
+        </ul>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Resume</a>
+          <a class="btn btn--ghost" href="https://github.com/CisThard" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn--ghost" href="mailto:he3717@gmail.com">Email</a>
+          <a class="btn btn--ghost" href="#" rel="noopener">Notion / Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 2. CORE STRENGTHS ============== -->
+    <section id="strengths" class="section" aria-labelledby="strengths-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">02 — Core Strengths</p>
+          <h2 id="strengths-title" class="section__title">핵심 역량</h2>
+          <p class="section__sub">DevOps · Cloud · 접근통제 · 운영을 가로지르는 네 가지 축.</p>
+        </header>
+
+        <div class="grid grid--4">
+          <article class="card card--strength">
+            <h3 class="card__title">Cloud &amp; Infrastructure</h3>
+            <p class="card__body">
+              AWS 기반 인프라 구성, EKS 운영, ALB/NLB, CloudFront, WAF, RDS, S3, DynamoDB 등
+              클라우드 리소스를 활용한 서비스 운영 경험이 있습니다.
+            </p>
+          </article>
+
+          <article class="card card--strength">
+            <h3 class="card__title">DevOps &amp; Automation</h3>
+            <p class="card__body">
+              GitHub Actions, Argo CD, Docker, Kubernetes를 활용해 CI/CD와 GitOps 기반
+              배포 흐름을 구성하고 운영한 경험이 있습니다.
+            </p>
+          </article>
+
+          <article class="card card--strength">
+            <h3 class="card__title">Access Control &amp; Security</h3>
+            <p class="card__body">
+              Teleport 기반 접근통제, RBAC 설계, 감사 로그, ISMS 인증 대응, 보안 장비 운영 등
+              보안 중심의 인프라 운영 경험을 보유하고 있습니다.
+            </p>
+          </article>
+
+          <article class="card card--strength">
+            <h3 class="card__title">Troubleshooting &amp; Operations</h3>
+            <p class="card__body">
+              운영 중 발생하는 장애 원인을 분석하고, 재발 방지 관점에서 문서화·자동화·구조 개선으로
+              연결하는 문제 해결 경험이 있습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 3. FEATURED PROJECT ============== -->
+    <section id="project" class="section section--alt" aria-labelledby="project-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">03 — Featured Project</p>
+          <h2 id="project-title" class="section__title">대표 프로젝트</h2>
+          <p class="section__sub">DevOps · 접근통제 · GitOps · 관측성을 한 시스템에 통합한 플랫폼.</p>
+        </header>
+
+        <article class="featured">
+          <div class="featured__head">
+            <p class="featured__tag">Zero Trust · Internal Access Platform · Team Project</p>
+            <h3 class="featured__title">Zero Trust 기반 EKS 내부 접근통제 플랫폼</h3>
+            <p class="featured__lede">
+              AWS EKS 환경에서 내부 운영 리소스 접근을 <strong>요청 → 승인 → 임시 권한 → 자동 회수</strong>
+              흐름으로 통제하는 DevOps 접근관리 플랫폼입니다.
+            </p>
+          </div>
+
+          <div class="featured__grid">
+            <div class="featured__col">
+              <h4 class="featured__h4">개요</h4>
+              <p class="featured__p">
+                팀 프로젝트로 AWS EKS 기반 내부 플랫폼을 구축했습니다. Teleport CE를 단일 접근 게이트웨이로 구성하여
+                EKS, Grafana, Argo CD 등 내부 운영 리소스 접근을 중앙화했고, 사용자가 접근 요청을 생성하면
+                승인자가 검토한 뒤 일정 시간 동안만 임시 권한을 부여하는 흐름을 구현했습니다.
+                또한 LLM을 활용해 요청 내용 기반의 Teleport Role YAML 초안을 생성하도록 구성하여
+                최소 권한 검토 효율을 높였고, TTL 기반 자동 권한 회수와 감사 로그 저장 구조를 설계했습니다.
+              </p>
+
+              <h4 class="featured__h4">담당 역할</h4>
+              <p class="featured__p">
+                Teleport 기반 접근통제 구조 설계, EKS RBAC 연동, 접근 요청·승인 흐름 설계,
+                Teleport Role YAML 생성 로직 검토, GitOps 배포 흐름 구성, 인프라 장애 대응,
+                운영 비용 최적화, 최종 발표 및 문서화를 담당했습니다.
+              </p>
+
+              <h4 class="featured__h4">성과</h4>
+              <p class="featured__p featured__p--accent">
+                단순한 서비스 배포 프로젝트가 아니라, 운영자가 내부 리소스에 접근하는 과정을
+                <strong>통제·감사·자동화</strong>하는 플랫폼을 구현했습니다. 상시 권한을 줄이고
+                승인 기반의 임시 권한 부여와 자동 회수 구조를 적용하여, 실제 조직의 내부 접근관리 문제를
+                DevOps 관점에서 해결하고자 했습니다.
+              </p>
+            </div>
+
+            <aside class="featured__col featured__side">
+              <h4 class="featured__h4">핵심 기능</h4>
+              <ul class="checklist">
+                <li>요청/승인 기반 임시 접근 권한 부여</li>
+                <li>LLM 기반 Teleport Role YAML 초안 생성</li>
+                <li>Teleport CE 기반 단일 접근 게이트웨이</li>
+                <li>EKS RBAC 연동</li>
+                <li>TTL 기반 권한 자동 회수</li>
+                <li>감사 로그 DynamoDB 저장</li>
+                <li>세션 기록 S3 저장</li>
+                <li>GitHub Actions + Argo CD GitOps 배포</li>
+                <li>CloudFront + WAF 외부 서비스 보호</li>
+                <li>Prometheus / Grafana / Loki 관측성</li>
+              </ul>
+
+              <h4 class="featured__h4">사용 기술</h4>
+              <ul class="badges badges--sm" aria-label="사용 기술">
+                <li class="badge">AWS EKS</li><li class="badge">EC2</li><li class="badge">ALB</li>
+                <li class="badge">NLB</li><li class="badge">Route53</li><li class="badge">ACM</li>
+                <li class="badge">CloudFront</li><li class="badge">WAF</li><li class="badge">RDS</li>
+                <li class="badge">S3</li><li class="badge">DynamoDB</li><li class="badge">IAM</li>
+                <li class="badge">Kubernetes</li><li class="badge">Docker</li>
+                <li class="badge badge--accent">Teleport CE</li>
+                <li class="badge">GitHub Actions</li><li class="badge">Argo CD</li>
+                <li class="badge">Terraform</li><li class="badge">Prometheus</li>
+                <li class="badge">Grafana</li><li class="badge">Loki</li>
+                <li class="badge">Python</li><li class="badge">React</li>
+              </ul>
+            </aside>
+          </div>
+
+          <footer class="featured__foot">
+            <a class="btn btn--ghost btn--sm" href="#" rel="noopener">Repository</a>
+            <a class="btn btn--ghost btn--sm" href="#" rel="noopener">Architecture / Docs</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============== 4. WORK EXPERIENCE ============== -->
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">04 — Work Experience</p>
+          <h2 id="experience-title" class="section__title">경력</h2>
+          <p class="section__sub">실서비스 환경에서의 DevOps · 보안 운영 경험.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--exp">
+              <header class="exp__head">
+                <div>
+                  <h3 class="exp__company">주식회사 미르니</h3>
+                  <p class="exp__role">매니저 · 인프라 운영 / DevOps</p>
+                </div>
+                <p class="exp__period"><time>2021.12</time> – <time>2024.08</time> · 2년 9개월</p>
+              </header>
+
+              <p class="exp__summary">
+                블록체인 노드와 SaaS 서비스를 운영하는 환경에서 클라우드 및 서버 인프라 운영, GitHub Actions 기반 CI/CD 파이프라인 설계·자동화,
+                Teleport 기반 운영 접근 제어 및 권한 구조 개선, ISMS 인증 심사 준비 등 DevOps 전반을 수행했습니다.
+                AWS · GCP · Vultr · OVH · PhoenixNAP · Naver Cloud 등 6개 클라우드 환경에서 총 25대 서버를 운영하며,
+                블록체인 · SaaS · 개발 환경 자산 97건을 통합 관리했습니다.
+              </p>
+
+              <div class="exp__grid">
+                <section class="exp__block">
+                  <h4 class="exp__h4">① 운영 인프라 접근 제어 표준화 &amp; 권한 구조 개선</h4>
+                  <ul class="bullets">
+                    <li>서버 25대 / 자산 97건 대상 — 분산 SSH Key 접근을 Teleport 중심 구조로 전환</li>
+                    <li>자산 유형별 라벨링 체계 · 운영 매뉴얼 문서화 (인수인계 가능 수준)</li>
+                    <li>CI/CD 접근을 개인 관리자 계정 → Teleport Machine ID Bot 인증 구조로 전환</li>
+                    <li>서비스별 전용 Role <strong>11종 신규 설계</strong></li>
+                    <li>Teleport v14 업그레이드 후 SSH 접속 장애 약 20대 발생 — v13 롤백 및 단계적 재업그레이드로 복구</li>
+                    <li>Teleport audit log Slack 실시간 알림 (Python · systemd 상시 운영)</li>
+                    <li><strong>성과:</strong> 운영 범위 초과 권한 계정 7건 → 0건 / 3 Role → 11 Role / 탐지 시간 시간 단위 → 초 단위</li>
+                  </ul>
+                  <p class="exp__stack">Teleport · RBAC · Machine ID · Python · Zapier · systemd</p>
+                </section>
+
+                <section class="exp__block">
+                  <h4 class="exp__h4">② CI/CD 파이프라인 설계 &amp; 배포 자동화</h4>
+                  <ul class="bullets">
+                    <li>백엔드 / 프론트엔드 각 GitHub Actions → Docker → ECR → ECS 파이프라인 2종 설계·운영</li>
+                    <li>Teleport Machine ID 기반 인증서(TTL) 방식 자동화로 보안 통제 함께 반영</li>
+                    <li>NCG 노드 6대(3개 리전) 스냅샷 교체·재배포를 Ansible Playbook으로 자동화 — 4~6시간 → 2~3시간 (<strong>약 50% 단축</strong>)</li>
+                    <li>반복 작업 7종 Ansible Role로 모듈화</li>
+                    <li>Kong Hybrid 모드(Control Plane / Data Plane 분리) 환경에서 API Key · Rate Limiting · HTTPS 정책 운영</li>
+                    <li><strong>성과:</strong> 1년 5개월간 파이프라인 자체 장애로 인한 실패 0건</li>
+                  </ul>
+                  <p class="exp__stack">GitHub Actions · AWS ECS / ECR · Docker · Ansible · Kong</p>
+                </section>
+
+                <section class="exp__block">
+                  <h4 class="exp__h4">③ 멀티클라우드 인프라 운영 &amp; 장애 대응</h4>
+                  <ul class="bullets">
+                    <li>AWS · GCP · Vultr · OVH · PhoenixNAP · Naver Cloud 6개 환경 25대 서버 운영</li>
+                    <li>ICP 노드 21대 데이터센터에서 직접 설치·운영</li>
+                    <li>강제 IC-OS 업데이트 다운타임 — BIOS · USB 이미지 · 버전 정합성 점검으로 복구 및 재발 방지 절차 수립</li>
+                    <li>NCG 노드: AWS EKS → ECS → Vultr Bare Metal Docker로 비용·적합성 평가 기반 단계적 전환</li>
+                    <li>PhoenixNAP 싱가포르 리전 장애 시 영향 범위 분석 및 OVH 백업 체계 제안 — 포스트모텀 문서화</li>
+                    <li><strong>성과:</strong> 비용·가용성·복구 가능성을 함께 고려하는 멀티클라우드 운영 표준 절차 수립</li>
+                  </ul>
+                  <p class="exp__stack">AWS · GCP · Vultr · OVH · PhoenixNAP · Naver Cloud · Docker · On-premise</p>
+                </section>
+
+                <section class="exp__block">
+                  <h4 class="exp__h4">④ 보안 운영 체계 정비 &amp; ISMS 인증 심사 준비</h4>
+                  <ul class="bullets">
+                    <li>사내 자산 97건을 7개 카테고리(서버 · DB · SW · 월렛 · PC · 문서 · 정보보호시스템)로 분류·관리</li>
+                    <li>Fortigate 네트워크 보안 정책 초기 설정</li>
+                    <li>Apple Jamf / Windows Intune MDM 관리 체계 구성</li>
+                    <li>ISMS 인증 심사 대응을 위한 정책·자산·운영 항목 정비 주도 (사업 방향 변경으로 최종 신청은 미진행, 심사 대응 가능 수준까지 준비 완료)</li>
+                  </ul>
+                  <p class="exp__stack">ISMS · Fortigate · Jamf · Intune · 자산관리</p>
+                </section>
+              </div>
+
+              <p class="exp__stackline">
+                <span class="exp__stackline-label">활용 기술 요약</span>
+                AWS (EC2 · ECS · ECR · IAM · RDS · Lambda · S3 · CloudWatch) ·
+                GitHub Actions · Docker · Ansible · Teleport · Kong ·
+                Prometheus · Loki · Promtail · node-exporter · PagerDuty ·
+                PostgreSQL · MySQL · Fortigate · Jamf · Intune
+              </p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============== 5. TECHNICAL SKILLS ============== -->
+    <section id="skills" class="section section--alt" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">05 — Technical Skills</p>
+          <h2 id="skills-title" class="section__title">기술 스택</h2>
+          <p class="section__sub">카테고리별 사용 기술 — 직무 비중 순 정렬.</p>
+        </header>
+
+        <div class="grid grid--skills">
+          <section class="card card--skill">
+            <h3 class="skill__title">Cloud (Multi)</h3>
+            <ul class="badges">
+              <li class="badge badge--accent">AWS</li>
+              <li class="badge">EC2</li><li class="badge">ECS</li><li class="badge">EKS</li>
+              <li class="badge">ECR</li><li class="badge">IAM</li><li class="badge">RDS</li>
+              <li class="badge">S3</li><li class="badge">CloudWatch</li><li class="badge">Lambda</li>
+              <li class="badge">ALB / NLB</li><li class="badge">Route53</li><li class="badge">CloudFront</li>
+              <li class="badge">WAF</li><li class="badge">DynamoDB</li>
+              <li class="badge">GCP</li><li class="badge">Naver Cloud</li>
+              <li class="badge">Vultr</li><li class="badge">OVH</li><li class="badge">PhoenixNAP</li>
+              <li class="badge">On-premise</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">Container &amp; Orchestration</h3>
+            <ul class="badges">
+              <li class="badge">Docker</li><li class="badge">Kubernetes</li>
+              <li class="badge">Helm</li><li class="badge">EKS</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">DevOps / CI/CD / IaC</h3>
+            <ul class="badges">
+              <li class="badge">GitHub Actions</li><li class="badge">Argo CD</li>
+              <li class="badge">Ansible</li><li class="badge">Terraform</li>
+              <li class="badge">GitOps</li><li class="badge">Kong (Hybrid)</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">Access Control / Security</h3>
+            <ul class="badges">
+              <li class="badge badge--accent">Teleport</li>
+              <li class="badge">Machine ID</li><li class="badge">RBAC</li>
+              <li class="badge">Least Privilege</li><li class="badge">Audit Logging</li>
+              <li class="badge">ISMS</li><li class="badge">Fortigate</li>
+              <li class="badge">Jamf</li><li class="badge">Intune (MDM)</li>
+              <li class="badge">IAM</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">Monitoring / Observability</h3>
+            <ul class="badges">
+              <li class="badge">Prometheus</li><li class="badge">Grafana</li>
+              <li class="badge">Loki</li><li class="badge">Promtail</li>
+              <li class="badge">node-exporter</li><li class="badge">Alertmanager</li>
+              <li class="badge">CloudWatch</li><li class="badge">PagerDuty</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">Language / Scripting</h3>
+            <ul class="badges">
+              <li class="badge">Python</li><li class="badge">Bash</li><li class="badge">SQL</li>
+              <li class="badge">HTML</li><li class="badge">CSS</li>
+            </ul>
+          </section>
+
+          <section class="card card--skill">
+            <h3 class="skill__title">Database</h3>
+            <ul class="badges">
+              <li class="badge">MySQL</li><li class="badge">PostgreSQL</li>
+              <li class="badge">RDS</li><li class="badge">DynamoDB</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 6. RESEARCH & PUBLICATIONS ============== -->
+    <section id="research" class="section" aria-labelledby="research-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">06 — Research</p>
+          <h2 id="research-title" class="section__title">Research</h2>
+          <p class="section__sub">
+            개인정보보호와 보안 정책을 주제로 한 연구 경험을 보유하고 있으며, KCI 등재 및 후보 학술지에 논문을 게재했습니다.
+            해당 경험은 보안 관점에서 시스템을 바라보고, 기술적 구현뿐 아니라 정책·위험·관리 관점까지 함께 고려하는 기반이 되었습니다.
+          </p>
+        </header>
+
+        <div class="grid grid--2">
+          <article class="card card--pub">
+            <p class="pub__rank">KCI 등재</p>
+            <h3 class="pub__title">개인정보보호 정책·보안 관련 연구</h3>
+            <p class="pub__meta">제1저자 · KCI 등재 학술지</p>
+            <p class="pub__abs">개인정보보호와 보안 정책을 주제로 한 KCI 등재 학술지 게재 논문. 기술적 구현뿐 아니라 정책·위험·관리 관점까지 다룬 연구 결과물.</p>
+            <a
+              class="pub__link"
+              href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002725205"
+              target="_blank"
+              rel="noopener"
+            >View on KCI →</a>
+          </article>
+
+          <article class="card card--pub">
+            <p class="pub__rank pub__rank--cand">KCI 후보</p>
+            <h3 class="pub__title">개인정보보호 정책·보안 관련 연구</h3>
+            <p class="pub__meta">제2저자 · KCI 후보 학술지</p>
+            <p class="pub__abs">개인정보보호와 보안 정책을 주제로 한 KCI 후보 학술지 게재 논문. BoB 활동 시기 연구 활동의 결과물.</p>
+            <a
+              class="pub__link"
+              href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002682497"
+              target="_blank"
+              rel="noopener"
+            >View on KCI →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 7. CERTIFICATIONS ============== -->
+    <section id="certs" class="section section--alt" aria-labelledby="certs-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">07 — Certifications</p>
+          <h2 id="certs-title" class="section__title">자격증</h2>
+          <p class="section__sub">시스템·보안 관련 자격을 우선 배치.</p>
+        </header>
+
+        <div class="certs">
+          <div class="certs__group">
+            <h3 class="certs__group-title">System &amp; Security</h3>
+            <ul class="certs__list">
+              <li class="cert cert--primary">
+                <div class="cert__name">Red Hat Certified System Administrator (RHCSA)</div>
+                <div class="cert__org">Red Hat · 2026.01</div>
+              </li>
+              <li class="cert cert--primary">
+                <div class="cert__name">정보보안관제사 3급</div>
+                <div class="cert__org">한국사이버감시단 · 2019.02</div>
+              </li>
+              <li class="cert cert--primary">
+                <div class="cert__name">인터넷보안관리사</div>
+                <div class="cert__org">한국정보통신자격협회 · 2016.04</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="certs__group">
+            <h3 class="certs__group-title">General</h3>
+            <ul class="certs__list certs__list--sub">
+              <li class="cert cert--sub"><span>컴퓨터활용능력 2급 · 2019.02</span></li>
+              <li class="cert cert--sub"><span>워드프로세서 단일등급 · 2019.02</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 8. EDUCATION & TRAINING ============== -->
+    <section id="education" class="section" aria-labelledby="edu-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">08 — Education &amp; Training</p>
+          <h2 id="edu-title" class="section__title">교육 &amp; 학력</h2>
+          <p class="section__sub">학교, 부트캠프, 보안 트레이닝, 군 복무 경험.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">클라우드 데이터 엔지니어 교육 과정</h3>
+              <p class="edu__meta">2026 · 부트캠프</p>
+              <p class="edu__desc">
+                클라우드 인프라, 데이터 엔지니어링, DevOps, Kubernetes, AWS 기반 프로젝트를 학습하고,
+                팀 프로젝트를 통해 EKS 기반 Zero Trust 내부 접근통제 플랫폼을 구축했습니다.
+              </p>
+            </article>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">케이쉴드 주니어 (K-Shield Jr)</h3>
+              <p class="edu__meta">2021.03 — 2021.06 · KISA · 보안사고 분석대응 과정</p>
+              <p class="edu__desc">
+                디지털 포렌식, 보안로그 분석 등 침해대응 실무 교육을 이수했고,
+                SQL Injection 웹 취약점 점검 도구 개발 프로젝트를 수행했습니다.
+              </p>
+            </article>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">차세대 보안리더 양성 프로그램 Best of the Best (BoB)</h3>
+              <p class="edu__meta">2020.07 — 2021.03 · KITRI · 보안 컨설팅 트랙</p>
+              <p class="edu__desc">
+                가상 기업 ISMS 컨설팅 프로젝트 팀장, 해외 애플리케이션 개인정보 무단 수집 이슈 프로젝트 팀장을 수행했고,
+                보안 이슈가 국가 대응으로 이어지는 프로세스 연구를 수행했습니다.
+                모의해킹·ISMS-P 인증·보안 정책 교육을 이수하고 KCI 등재 및 후보 학술지에 논문 1편씩을 게재했습니다.
+              </p>
+            </article>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">ISO 27001:2013 ISMS Auditor / Lead Auditor Course</h3>
+              <p class="edu__meta">2020.01 — 2020.02 · IPQC 국제자격인증원</p>
+              <p class="edu__desc">
+                정보보호 관리체계(ISMS) 국제 표준 심사 과정을 이수했습니다.
+              </p>
+            </article>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">사이버작전사령부 · 육군 정보보호병</h3>
+              <p class="edu__meta">2017.08 — 2019.05 · 군 복무 1년 9개월</p>
+              <p class="edu__desc">
+                육·해·공 전군 대상 바이러스 관리 및 침해시도 탐지·분석 업무를 수행했습니다.
+                VMS(Virus Management System)·TMS(Threat Management System)를 운영하며,
+                중국·인도·러시아 등 다국가 침해시도의 정·오탐 판별과 피해 규모 조사를 통해 2차 피해를 차단했습니다.
+                민(KISA·문화체육관광부 등 정부부처)·관(국정원)·군 공조 대응 경험과 모범용사 표창 수상 이력이 있습니다.
+              </p>
+            </article>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article class="card card--edu">
+              <h3 class="edu__title">경일대학교 사이버보안학과</h3>
+              <p class="edu__meta">학사</p>
+              <p class="edu__desc">
+                사이버보안 전공 기반으로 정보보호, 네트워크, 시스템 보안, 개인정보보호 관련 학습을 수행했습니다.
+              </p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============== 9. ACTIVITIES / VOLUNTEER / AWARDS ============== -->
+    <section id="activities" class="section section--alt" aria-labelledby="act-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">09 — Activities · Volunteer · Awards</p>
+          <h2 id="act-title" class="section__title">대외활동 &amp; 봉사 &amp; 수상</h2>
+          <p class="section__sub">신뢰도 보강 항목 — 카테고리별로 접어서 정리.</p>
+        </header>
+
+        <div class="accordion" data-accordion>
+          <details class="acc" open>
+            <summary class="acc__sum">
+              <span class="acc__label">Hackathon Awards</span>
+              <span class="acc__count">4</span>
+            </summary>
+            <ul class="acc__list">
+              <li><strong>#1 · Hackatom Seoul</strong> — Cosmos · 2022.07</li>
+              <li><strong>#1 · Sui x KuCoin Labs Hackathon</strong> — Sui, KuCoin · 2023.06</li>
+              <li><strong>#3 · Aptos Seoul Hack</strong> — Aptos · 2023.02</li>
+              <li><strong>#3 · Sui Builder House Seoul</strong> — Sui · 2023.06</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary class="acc__sum">
+              <span class="acc__label">대외활동 / 커뮤니티</span>
+              <span class="acc__count">4</span>
+            </summary>
+            <ul class="acc__list">
+              <li>
+                <strong>경일대학교 동아리 K-Hackers</strong>
+                — 교내 정보보호 동아리 설립 · 회장 역임 (2019.10 — 2020.10) · KUCIS 소속
+                <span class="acc__sub">2016.06 — 2021.10</span>
+              </li>
+              <li>
+                <strong>KUCIS 영남권역 운영진</strong>
+                — 영남권 정보보호 동아리 관리 (대학정보보호연합동아리)
+                <span class="acc__sub">2020.07 — 2020.12</span>
+              </li>
+              <li>
+                <strong>한국인터넷진흥원(KISA) 개인정보 불법유통 방지 모니터링단</strong>
+                — 침해신고 및 보호 정책 아이디어 제안
+                <span class="acc__sub">2021.06 — 2021.07</span>
+              </li>
+              <li>
+                <strong>행정자치부 개인정보지킴이</strong>
+                — 개인정보 침해신고 및 보호 활동
+                <span class="acc__sub">2016.06 — 2017.06</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary class="acc__sum">
+              <span class="acc__label">봉사 / 멘토링</span>
+              <span class="acc__count">1</span>
+            </summary>
+            <ul class="acc__list">
+              <li>
+                <strong>교육부 자원봉사</strong>
+                — 중학생 대상 정보보안 인식 제고 및 진로 교육
+                <span class="acc__sub">2016.08 — 2016.12</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary class="acc__sum">
+              <span class="acc__label">해외 경험</span>
+              <span class="acc__count">3</span>
+            </summary>
+            <ul class="acc__list">
+              <li>
+                <strong>캐나다 워킹홀리데이</strong>
+                — 해외 근무 및 협업 경험
+                <span class="acc__sub">2025</span>
+              </li>
+              <li>
+                <strong>미국 네바다 주립대 온라인 어학연수</strong>
+                — 영어 회화 · 독해 역량 강화
+                <span class="acc__sub">2020.12 — 2021.01</span>
+              </li>
+              <li>
+                <strong>미국 퍼듀대학교 어학연수</strong>
+                — 현지 영어 회화 · 독해 학습
+                <span class="acc__sub">2017.01 — 2017.02</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary class="acc__sum">
+              <span class="acc__label">기타 표창</span>
+              <span class="acc__count">1</span>
+            </summary>
+            <ul class="acc__list">
+              <li>
+                <strong>모범용사 표창</strong>
+                — 사이버작전사령부 정보보호병 복무 중 타국가 침해시도 예방 조치 공로
+              </li>
+            </ul>
+            <p class="acc__note">
+              교내 장학금 · 성적우수 장학금 · 코로나19 특별장학금 등 학내 수혜 이력 다수 (별도 표기 생략).
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 10. CAREER TIMELINE ============== -->
+    <section id="timeline" class="section" aria-labelledby="tl-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">10 — Career Timeline</p>
+          <h2 id="tl-title" class="section__title">한눈에 보는 커리어</h2>
+          <p class="section__sub">보안 관제로 시작해 DevOps · Cloud · Platform으로 이어진 흐름.</p>
+        </header>
+
+        <ol class="ctimeline">
+          <li class="ctimeline__item">
+            <div class="ctimeline__year">2017.08 — 2019.05</div>
+            <div class="ctimeline__body">
+              <h3>사이버작전사령부 · 육군 정보보호병</h3>
+              <p>VMS · TMS 운영, 침해시도 탐지·분석, 민관군 공조 대응. 모범용사 표창.</p>
+            </div>
+          </li>
+          <li class="ctimeline__item">
+            <div class="ctimeline__year">2020 — 2021</div>
+            <div class="ctimeline__body">
+              <h3>K-Shield Jr · BoB · ISO27001 · 개인정보보호 연구</h3>
+              <p>보안 교육 이수, 프로젝트 팀장 수행, KCI 등재·후보 논문 게재.</p>
+            </div>
+          </li>
+          <li class="ctimeline__item ctimeline__item--accent">
+            <div class="ctimeline__year">2021.12 — 2024.08</div>
+            <div class="ctimeline__body">
+              <h3>주식회사 미르니 · DevOps / DevSecOps</h3>
+              <p>클라우드 운영, CI/CD, Teleport, ISMS 대응.</p>
+            </div>
+          </li>
+          <li class="ctimeline__item">
+            <div class="ctimeline__year">2025</div>
+            <div class="ctimeline__body">
+              <h3>캐나다 워킹홀리데이</h3>
+              <p>해외 경험 및 커뮤니케이션 역량 확장.</p>
+            </div>
+          </li>
+          <li class="ctimeline__item ctimeline__item--accent">
+            <div class="ctimeline__year">2026</div>
+            <div class="ctimeline__body">
+              <h3>클라우드 데이터 엔지니어 교육</h3>
+              <p>EKS + Teleport 기반 Zero Trust 프로젝트 수행.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============== 11. CONTACT ============== -->
+    <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">11 — Contact</p>
+          <h2 id="contact-title" class="section__title">함께 일하고 싶다면</h2>
+        </header>
+
+        <p class="contact__lede">
+          클라우드 인프라, DevOps, 플랫폼 엔지니어링, 보안 기반 운영 자동화에 관심이 있습니다.<br />
+          관련 포지션이나 협업 기회가 있다면 편하게 연락 주세요.
+        </p>
+
+        <ul class="contact__list">
+          <li>
+            <span class="contact__k">Email</span>
+            <a class="contact__v" href="mailto:he3717@gmail.com">he3717@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact__k">GitHub</span>
+            <a class="contact__v" href="https://github.com/CisThard" target="_blank" rel="noopener">github.com/CisThard</a>
+          </li>
+          <li>
+            <span class="contact__k">Resume PDF</span>
+            <a class="contact__v" href="#" rel="noopener">View resume</a>
+          </li>
+          <li>
+            <span class="contact__k">Notion / LinkedIn</span>
+            <a class="contact__v" href="#" rel="noopener">Coming soon</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot__inner">
+      <p>© <span id="year">2026</span> Sehwan Kim · Built with HTML / CSS / JS · Hosted on GitHub Pages</p>
+      <a href="#hero" class="foot__top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

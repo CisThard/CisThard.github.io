@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local notes (not committed)
+notes/
+draft/
