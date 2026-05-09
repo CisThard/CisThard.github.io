@@ -650,9 +650,37 @@ summary:focus-visible {
   margin: 0 0 4px;
 }
 .pub__rank--cand { background: #f1f5f9; color: var(--text-2); }
-.pub__title { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
-.pub__meta { margin: 0; color: var(--text-3); font-size: 13.5px; font-family: var(--font-mono); }
-.pub__abs { margin: 6px 0 0; color: var(--text-2); font-size: 14.5px; }
+.pub__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+.pub__title-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+}
+.pub__title-en {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-3);
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.pub__meta {
+  margin: 8px 0 0;
+  color: var(--text-2);
+  font-size: 13.5px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.pub__abs { margin: 10px 0 0; color: var(--text-2); font-size: 14.5px; }
 .pub__link {
   margin-top: 10px;
   align-self: flex-start;
